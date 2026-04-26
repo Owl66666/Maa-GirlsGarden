@@ -84,8 +84,5 @@
             "entry": "迷宫准备"
         }
     ],
-    "option": {},
-    "import": [
-        ""
-    ]
+    "option": {}
 }
