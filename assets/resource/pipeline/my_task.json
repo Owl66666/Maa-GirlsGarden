@@ -1,12 +1,455 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {},
-    "MyTask4": {
-        "recognition": "Custom",
-        "custom_recognition": "my_reco_222",
-        "action": "Custom",
-        "custom_action": "my_action_111"
+    "迷宫任务初始化": {
+        "next": [
+            "mazeInit_迷宫节点选择",
+            "mazeInit_战斗结算",
+            "mazeInit_buff选择",
+            "maze_Init_选择助战",
+            "mazeInit_商店"
+        ]
     },
-    "OcrTask": {}
+    "迷宫准备": {
+        "recognition": "TemplateMatch", // 图像模板匹配
+        "template": "maze/探索准备.png", // 匹配素材路径
+        "action": "Click",
+        "next": [
+            "开启迷宫"
+        ]
+    },
+    "开启迷宫": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/开始探索.png"
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "跳过作战"
+        ]
+    },
+    "跳过作战": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/跳过作战.png"
+        ],
+        "roi": [
+            1148,
+            50,
+            108,
+            35
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "结算"
+        ]
+    },
+    "结算": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/战斗结算页面.png"
+        ],
+        "roi": [
+            253,
+            653,
+            182,
+            34
+        ],
+        "post_wait_freezes": 400,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1104,
+                    655
+                ] // 点击下一步
+            }
+        },
+        "next": [
+            // "跳过作战",
+            "结算结束检测"
+        ]
+    },
+    "结算结束检测": {
+        "next": [
+            "结算",
+            "结算判断"
+        ]
+    },
+    "结算判断": {
+        "next": [
+            "结算_局内结束",
+            "结算_迷宫结束"
+        ]
+    },
+    "结算_局内结束": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/结束_战局内.png"
+        ],
+        "roi": [
+            440,
+            6,
+            420,
+            59
+        ],
+        "post_wait_freezes": 200,
+        "next": [
+            "战斗结束选择_Buff品质"
+        ]
+    },
+    "结算_迷宫结束": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/迷宫结算.png",
+            "maze/迷宫结算2.png"
+        ],
+        "next": [
+            "完成迷宫",
+            "迷宫结算"
+        ]
+    },
+    "完成迷宫": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/胜利_下一步.png"
+        ],
+        "action": "Click",
+        "next": [
+            "迷宫结算"
+        ]
+    },
+    "战斗结束选择_Buff品质": {
+        "next": [
+            "iBuff_best_1",
+            "iBuff_best_2",
+            "iBuff_best_3",
+            "iBuff_goal_1",
+            "iBuff_goal_2",
+            "iBuff_goal_3",
+            "iBuff_any"
+        ]
+    },
+    "选择节点": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/选择节点.png"
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "跳过作战"
+        ],
+        "on_error": [
+            "迷宫任务初始化"
+        ]
+    },
+    "战斗结束选择_助战": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/战斗结束选择_助战.png"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1134,
+                    666
+                ]
+            }
+        },
+        "next": [
+            "战斗结束选择_商店"
+        ]
+    },
+    "战斗结束选择_商店": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/战斗结束选择_商店.png"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1134,
+                    666
+                ]
+            }
+        },
+        "next": [
+            "选择节点"
+        ]
+    },
+    "迷宫结算": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/强化_类型装备.png"
+        ],
+        "action": "Click",
+        "next": [
+            "进行强化"
+        ]
+    },
+    "进行强化": {
+        "next": [
+            "可升级强化",
+            "不可升级强化",
+            "材料未用尽",
+            "结束"
+        ]
+    },
+    "结束": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/完成.png"
+        ],
+        "post_wait_freezes": 200,
+        "action": "Click",
+        "next": [
+            "迷宫准备"
+        ]
+    },
+    "可升级强化": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/可升级强化.png"
+        ],
+        "action": "Click",
+        "next": [
+            "进行强化"
+        ]
+    },
+    "不可升级强化": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/不可升级_投入.png"
+        ],
+        "action": "Click",
+        "next": [
+            "进行强化"
+        ]
+    },
+    "材料未用尽": {
+        "recognition": "OCR",
+        "roi": [
+            1184,
+            38,
+            70,
+            33
+        ],
+        "expected": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "next": [
+            "完成自动化条件",
+            "切换强化类型"
+        ]
+    },
+    "切换强化类型": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/强化类型_EN类型.png",
+            "maze/强化类型_敏捷.png"
+        ],
+        "roi": [
+            325,
+            102,
+            306,
+            44
+        ],
+        "threshold": [
+            0.95,
+            0.95
+        ],
+        "action": "Click",
+        "next": [
+            "进行强化"
+        ]
+    },
+    "完成自动化条件": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "maze/强化类型_敏捷_选中.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "DoNothing"
+    },
+    "iBuff_goal_1": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "count": 1000,
+        "roi": [
+            220,
+            227,
+            81,
+            122
+        ],
+        "lower": [
+            239,
+            211,
+            193
+        ],
+        "upper": [
+            255,
+            231,
+            213
+        ],
+        "action": "Click",
+        "next": [
+            "战斗结束选择_助战",
+            "选择节点"
+        ]
+    },
+    "iBuff_goal_2": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "count": 1000,
+        "roi": [
+            580,
+            225,
+            81,
+            123
+        ],
+        "lower": [
+            239,
+            211,
+            193
+        ],
+        "upper": [
+            255,
+            231,
+            213
+        ],
+        "action": "Click",
+        "next": [
+            "战斗结束选择_助战",
+            "选择节点"
+        ]
+    },
+    "iBuff_goal_3": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "count": 1000,
+        "roi": [
+            937,
+            225,
+            84,
+            124
+        ],
+        "lower": [
+            239,
+            211,
+            193
+        ],
+        "upper": [
+            255,
+            231,
+            213
+        ],
+        "action": "Click",
+        "next": [
+            "战斗结束选择_助战",
+            "选择节点"
+        ]
+    },
+    "iBuff_best_1": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "count": 1000,
+        "roi": [
+            220,
+            227,
+            81,
+            122
+        ],
+        "lower": [
+            197,
+            230,
+            237
+        ],
+        "upper": [
+            217,
+            250,
+            255
+        ],
+        "action": "Click",
+        "next": [
+            "战斗结束选择_助战",
+            "选择节点"
+        ]
+    },
+    "iBuff_best_2": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "count": 1000,
+        "roi": [
+            580,
+            225,
+            81,
+            123
+        ],
+        "lower": [
+            197,
+            230,
+            237
+        ],
+        "upper": [
+            217,
+            250,
+            255
+        ],
+        "action": "Click",
+        "next": [
+            "战斗结束选择_助战",
+            "选择节点"
+        ]
+    },
+    "iBuff_best_3": {
+        "recognition": "ColorMatch",
+        "method": 4,
+        "count": 1000,
+        "roi": [
+            937,
+            225,
+            84,
+            124
+        ],
+        "lower": [
+            197,
+            230,
+            237
+        ],
+        "upper": [
+            217,
+            250,
+            255
+        ],
+        "action": "Click",
+        "next": [
+            "战斗结束选择_助战",
+            "选择节点"
+        ]
+    },
+    "iBuff_any": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            256,
+            328
+        ],
+        "next": [
+            "战斗结束选择_助战",
+            "选择节点"
+        ]
+    }
 }

@@ -1,0 +1,78 @@
+{
+    // 识别目前进度
+    "mazeInit_迷宫节点选择": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "mazeInit/mazeInit_节点选择.png"
+        ],
+        "roi": [
+            526,
+            4,
+            227,
+            53
+        ],
+        "next": [
+            "选择节点"
+        ]
+    },
+    "mazeInit_战斗结算": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "mazeInit/mazeInit_战斗结算.png"
+        ],
+        "roi": [
+            713,
+            379,
+            110,
+            35
+        ],
+        "next": [
+            "结算"
+        ]
+    },
+    "mazeInit_buff选择": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "mazeInit/mazeInit_buff选择.png"
+        ],
+        "roi": [
+            504,
+            5,
+            269,
+            52
+        ],
+        "next": [
+            "战斗结束选择_Buff品质"
+        ]
+    },
+    "maze_Init_选择助战": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "mazeInit/mazeInit_选择助战.png"
+        ],
+        "roi": [
+            510,
+            162,
+            579,
+            50
+        ],
+        "next": [
+            "战斗结束选择_助战"
+        ]
+    },
+    "mazeInit_商店": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "mazeInit/mazeInit_商店.png"
+        ],
+        "roi": [
+            38,
+            214,
+            239,
+            235
+        ],
+        "next": [
+            "战斗结束选择_商店"
+        ]
+    }
+}

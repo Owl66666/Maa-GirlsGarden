@@ -1,0 +1,7 @@
+{
+    "识别并点击图标": {
+        "recognition": "TemplateMatch", // 图像模板匹配
+        "template": "test_1.png", // 匹配素材路径
+        "action": "Click"
+    }
+}
