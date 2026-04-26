@@ -36,8 +36,8 @@
             "name": "游戏端",
             "type": "Win32",
             "win32": {
-                "class_regex": ".*",
-                "window_regex": "ガールズ",
+                "class_regex": "UnityWndClass",
+                "window_regex": "マブラヴ・ガールズガーデンX",
                 // 截图及控制方式，请根据项目实际情况修改
                 // 文档: https://maafw.xyz/docs/2.4-ControlMethods
                 "screencap": "PrintWindow", // 截图方式
@@ -49,7 +49,8 @@
             "name": "Win32-Window-Background",
             "type": "Win32",
             "win32": {
-                "window_regex": "Paint",
+                "class_regex": "UnityWndClass",
+                "window_regex": "マブラヴ・ガールズガーデンX",
                 "screencap": "PrintWindow",
                 "mouse": "SendMessageWithWindowPos",
                 "keyboard": "PostMessage"
